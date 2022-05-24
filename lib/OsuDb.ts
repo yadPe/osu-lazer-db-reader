@@ -31,7 +31,7 @@ export default class OsuDb extends EventEmitter {
         return this.#realmBeatmapset.map(b => b.toJSON())
     }
 
-    public get beatmaps(): Beatmapset[] {
+    public get beatmaps(): Beatmap[] {
         return this.#realmBeatmap.map(b => b.toJSON())
     }
 
