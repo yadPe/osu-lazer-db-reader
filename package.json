@@ -1,0 +1,21 @@
+{
+  "name": "osu-lazer-db-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon target/example/src/main.js",
+    "build:watch": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.32",
+    "nodemon": "^2.0.16",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "realm": "^10.17.0"
+  }
+}
