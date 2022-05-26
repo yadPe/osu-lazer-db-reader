@@ -2,6 +2,13 @@ import EventEmitter from "events";
 import { beatmapSchema, beatmapsetSchema } from "./schema.js";
 import { Beatmap, Beatmapset } from "./shapes";
 
+interface OsuDbEventsMap extends Record<keyof typeof OsuDb.Events, (...args: any[]) => void> {
+    beatmapsetInserted: (index: number, beatmapset: Beatmapset) => void;
+    beatmapsetDeleted: (index: number) => void;
+    beatmapInserted: (index: number, beatmap: Beatmap) => void;
+    beatmapDeleted: (index: number) => void;
+}
+
 export default class OsuDb extends EventEmitter {
     #realm: Realm;
     #realmBeatmapset: Realm.Results<Beatmapset & Realm.Object>;
@@ -23,8 +30,12 @@ export default class OsuDb extends EventEmitter {
         this.#setupEventListeners();
     }
 
-    override addListener<T extends keyof typeof OsuDb.Events>(eventName: T, listener: (...args: any[]) => void): this {
+    override addListener<E extends keyof OsuDbEventsMap>(eventName: E, listener: OsuDbEventsMap[E]): this {
         return super.addListener(eventName, listener)
+    }
+
+    override emit<E extends keyof OsuDbEventsMap>(eventName: E, ...args: Parameters<OsuDbEventsMap[E]>): boolean {
+        return super.emit(eventName, ...args)
     }
 
     public get beatmapsets(): Beatmapset[] {
@@ -38,7 +49,7 @@ export default class OsuDb extends EventEmitter {
     #setupEventListeners() {
         const onBeatmapsetChange: Realm.CollectionChangeCallback<Beatmapset> = (beatmapsets, changes) => {
             changes.insertions.forEach(index => {
-                const insertedBeatmapset = beatmapsets[index];
+                const insertedBeatmapset = beatmapsets[index] as Beatmapset;
                 this.emit(OsuDb.Events.beatmapsetInserted, index, insertedBeatmapset)
             })
 
@@ -50,7 +61,7 @@ export default class OsuDb extends EventEmitter {
 
         const onBeatmapChange: Realm.CollectionChangeCallback<Beatmap> = (beatmap, changes) => {
             changes.insertions.forEach(index => {
-                const insertedBeatmap = beatmap[index];
+                const insertedBeatmap = beatmap[index] as Beatmap;
                 this.emit(OsuDb.Events.beatmapInserted, index, insertedBeatmap)
             })
 
