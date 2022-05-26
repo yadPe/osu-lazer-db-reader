@@ -1,13 +1,13 @@
 {
   "name": "osu-lazer-db-reader",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Read and react to osu!lazer database",
   "files": [
     "target/lib/**/*"
   ],
   "main": "target/lib/index.js",
   "types": "target/lib/index.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "nodemon target/example/src/main.js",
     "build:watch": "tsc -w",
