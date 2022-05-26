@@ -31,6 +31,7 @@ export class Beatmap implements BeatmapSchemaProperties {
     public SpecialStyle!: boolean;
     public BeatmapSet!: Beatmapset;
 
+    // TODO: add types for these properties
     public Difficulty: any;
     public Ruleset: any;
     public UserSettings!: any;
