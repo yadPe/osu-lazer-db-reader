@@ -5,7 +5,15 @@ Read and react to changes in the new realm database of osu lazer.
 ⚠️ **This is a work in progress.**
 Only beatmapset and beatmap are supported. Contributions are welcome!
 
-# Exemple
+## Installation
+
+npm::
+`npm install osu-lazer-db-reader`
+
+yarn:
+`yarn add osu-lazer-db-reader`
+
+## Exemple
 
 ```ts
 import { open, OsuDb } from "osu-lazer-db-reader";
