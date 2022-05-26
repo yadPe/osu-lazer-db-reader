@@ -1,6 +1,6 @@
 {
   "name": "osu-lazer-db-reader",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Read and react to osu!lazer database",
   "files": [
     "lib/**/*"
