@@ -14,9 +14,12 @@
     "lib": ["ESnext"],
     "types": ["node"],
 
+    "importHelpers": true,
+
     /* Emit */
     "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
-    "outDir": "./target" /* Specify an output folder for all emitted files. */,
+    "declarationMap": true /* Generate a sourcemap for each .d.ts file. */,
+    "outDir": "lib" /* Specify an output folder for all emitted files. */,
     "stripInternal": true /* Disable emitting declarations that have `@internal` in their JSDoc comments. */,
     "noEmitHelpers": true /* Disable generating custom helper functions like `__extends` in compiled output. */,
 
@@ -45,5 +48,6 @@
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
-  }
+  },
+  "include": ["src/**/*.ts"]
 }

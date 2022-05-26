@@ -3,13 +3,11 @@
   "version": "0.1.4",
   "description": "Read and react to osu!lazer database",
   "files": [
-    "target/lib/**/*"
+    "lib/**/*"
   ],
-  "main": "target/lib/index.js",
-  "types": "target/lib/index.ts",
-  "type": "commonjs",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "start": "nodemon target/example/src/main.js",
     "build:watch": "tsc -w",
     "build": "tsc",
     "prepublish": "npm run build"
@@ -24,7 +22,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.32",
-    "nodemon": "^2.0.16",
     "typescript": "^4.6.4"
   },
   "dependencies": {
